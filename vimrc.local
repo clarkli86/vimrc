@@ -1,0 +1,101 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+Plugin 'zenorocha/dracula-theme'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+set ai et sts=4 sw=4 ts=4 nocompatible bs=2 bg=dark hlsearch incsearch showbreak=---> ruler
+
+set ignorecase
+
+set sts=4 sw=4 ts=4
+
+syntax on
+colorscheme dracula
+set wildmenu
+
+autocmd BufWritePre * :%s/\s\+$//e
+
+
+" Highlight trailing whitespace when not in insert mode
+au InsertEnter * match Todo /\s\+\%#\@<!$/
+au InsertLeave * match Todo /\s\+$/
+
+" Highlight all trailing whitespace all the time
+match Todo /\s\+$/
+
+" Trailing whitespace and tabs will be listed
+set list listchars=tab:»·,trail:·
+
+" Tabs will be listed
+set list listchars=tab:»·
+
+augroup makefile
+    au!
+    au FileType make setlocal noet sts=0 ts=8 sw=8
+augroup END
+
+if has("gui_running")
+    set guioptions=egrLt
+    set guioptions=-s
+    " Windows Specific font
+    set guifont=Lucida_Console:h9:cANSI
+else
+    set bg=dark
+    if &term == "xterm" || &term == "xterm-color"
+        set t_Co=256
+        colorscheme dracula
+    endif
+endif
+
+set printoptions=paper:letter
+
+fun! <SID>StripTrailingWhitespaces()
+    " Save the cursor location
+    let l = line(".")
+    let c = col(".")
+    " Preserve search position by using call
+    call %s/\s\+$//e
+
+    " Restore the cursor location
+    call cursor(l, c)
+endfun
+
