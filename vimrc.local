@@ -24,8 +24,6 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-Plugin 'zenorocha/dracula-theme'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,7 +47,7 @@ set ignorecase
 set sts=4 sw=4 ts=4
 
 syntax on
-colorscheme dracula
+colorscheme desert256
 set wildmenu
 
 autocmd BufWritePre * :%s/\s\+$//e
@@ -82,7 +80,7 @@ else
     set bg=dark
     if &term == "xterm" || &term == "xterm-color"
         set t_Co=256
-        colorscheme dracula
+        colorscheme desert256
     endif
 endif
 
