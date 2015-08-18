@@ -97,3 +97,5 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+" Swap text on both sides of equals
+:command! -range=% SwapEquals <line1>,<line2>s/\([^=]*\)\s*=\s*\([^;]*\)/\2 = \1/g
