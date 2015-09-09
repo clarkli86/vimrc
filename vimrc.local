@@ -50,8 +50,11 @@ syntax on
 colorscheme desert256
 set wildmenu
 
+" Remove trailing spaces on saving
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Open file at the last edited location
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Highlight trailing whitespace when not in insert mode
 au InsertEnter * match Todo /\s\+\%#\@<!$/
