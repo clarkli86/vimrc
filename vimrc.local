@@ -66,6 +66,10 @@ set list listchars=tab:»·,trail:·
 " Tabs will be listed
 set list listchars=tab:»·
 
+" Enable folding but open files unfolded
+set foldmethod=syntax
+set foldlevel=99
+
 augroup makefile
     au!
     au FileType make setlocal noet sts=0 ts=8 sw=8
