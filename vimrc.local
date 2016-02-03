@@ -106,3 +106,10 @@ endfun
 
 " Swap text on both sides of equals
 :command! -range=% SwapEquals <line1>,<line2>s/\([^=]*\)\s*=\s*\([^;]*\)/\2 = \1/g
+
+" Enable doxygen syntax
+:let g:load_doxygen_syntax=1
+
+" Enable hpp/cpp skeleton
+au BufNewFile *.hpp 0r ~/.vim/hpp.skel | let IndentStyle = "cpp"
+au BufNewFile *.cpp 0r ~/.vim/cpp.skel | let IndentStyle = "cpp"
