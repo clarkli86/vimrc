@@ -119,3 +119,5 @@ au BufNewFile *.cpp 0r ~/.vim/cpp.skel | let IndentStyle = "cpp"
 " content;<CR> to start search
 vnoremap // y/<C-R>"<CR>
 
+" Comment current line by //
+nnoremap // I//<esc>
