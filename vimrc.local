@@ -115,5 +115,7 @@ au BufNewFile *.hpp 0r ~/.vim/hpp.skel | let IndentStyle = "cpp"
 au BufNewFile *.cpp 0r ~/.vim/cpp.skel | let IndentStyle = "cpp"
 
 " Press // to search for the selected text in visual mode
+" yank selected;<C-R> to insert '"' register which contains the last yanked
+" content;<CR> to start search
 vnoremap // y/<C-R>"<CR>
 
