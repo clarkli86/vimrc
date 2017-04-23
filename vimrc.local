@@ -52,8 +52,9 @@ syntax on
 colorscheme desert256
 set wildmenu
 
-" Remove trailing spaces on saving
-autocmd BufWritePre * :%s/\s\+$//e
+" Remove trailing spaces on saving except for patch
+let blacklist = ['diff']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
 
 " Open file at the last edited location
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
