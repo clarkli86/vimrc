@@ -30,11 +30,11 @@ Plug 'morhetz/gruvbox'
 " gutentags
 Plug 'ludovicchabant/vim-gutentags'
 " ALE
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " airline
 Plug 'vim-airline/vim-airline'
 " YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 " Ack inside VIM
 Plug 'mileszs/ack.vim'
 " Nerdtree
@@ -45,7 +45,10 @@ Plug 'Shougo/echodoc'
 Plug 'vim-scripts/a.vim'
 " Async run
 Plug 'skywind3000/asyncrun.vim'
-
+" deoplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -171,9 +174,9 @@ hi! SpellRare gui=undercurl guisp=magenta
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_server_log_level = 'error'
+let g:ycm_min_num_identifier_candidate_chars = 3
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
 set completeopt=menu,menuone
@@ -184,6 +187,10 @@ let g:ycm_semantic_triggers =  {
             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
             \ 'cs,lua,javascript': ['re!\w{2}'],
             \ }
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -210,7 +217,7 @@ let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 " Async Run
-:noremap <F7> :AsyncRun -raw make<cr>
+:noremap <F7> :AsyncRun -raw make -f stack/Makefile mk5<cr>
 " 自动打开 quickfix window ，高度为 6
 let g:asyncrun_open = 6
 " 任务结束时候响铃提醒
