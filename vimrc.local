@@ -33,8 +33,6 @@ Plug 'ludovicchabant/vim-gutentags'
 " Plug 'dense-analysis/ale'
 " airline
 Plug 'vim-airline/vim-airline'
-" YouCompleteMe
-" Plug 'ycm-core/YouCompleteMe'
 " Ack inside VIM
 Plug 'mileszs/ack.vim'
 " Nerdtree
@@ -45,14 +43,28 @@ Plug 'Shougo/echodoc'
 Plug 'vim-scripts/a.vim'
 " Async run
 Plug 'skywind3000/asyncrun.vim'
+" Auto Completion Plugins
+" YouCompleteMe
+" Plug 'ycm-core/YouCompleteMe'
 " deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  Plug 'zchee/deoplete-clang'
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+Plug 'prabirshrestha/async.vim'
+" LspReferences seems to replace cscope's <c-space> very well and is more
+" smart
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'lighttiger2505/deoplete-vim-lsp'
+
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -183,7 +195,7 @@ let g:ycm_min_num_identifier_candidate_chars = 3
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone
+" set completeopt=menu,menuone
 
 noremap <c-z> <NOP>
 
@@ -194,6 +206,10 @@ let g:ycm_semantic_triggers =  {
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+" deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
 
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
