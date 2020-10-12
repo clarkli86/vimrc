@@ -236,6 +236,9 @@ let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
+" vim-lsp
+let g:lsp_diagnostics_enabled = 0
+
 " Async Run
 :noremap <F7> :AsyncRun -raw make -f stack/Makefile mk5<cr>
 " 自动打开 quickfix window ，高度为 6
