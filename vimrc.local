@@ -64,7 +64,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'lighttiger2505/deoplete-vim-lsp'
-
+Plug 'clarkli86/cscope-maps'
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 filetype plugin indent on    " required
